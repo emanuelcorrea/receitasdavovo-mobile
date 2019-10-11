@@ -1,2 +1,2 @@
-# receitas-da-vovo-mobile
+# Receitas da Vovó Mobile
 Aplicativo mobile da Receitas da Vovó
