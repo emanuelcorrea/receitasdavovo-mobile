@@ -17,6 +17,10 @@ class _AddDataState extends State<AddData> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Adicionar Receita"),
+        flexibleSpace: Image(
+          image: AssetImage('assets/images/bg2.png'),
+          fit: BoxFit.cover,
+        ),
         centerTitle: true,
       ),
       body: Container(

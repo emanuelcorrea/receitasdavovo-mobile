@@ -34,6 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Map<String, dynamic> dados = Map();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   // Future<String> getData() async {
   //   var response = await http.get(
@@ -65,8 +66,22 @@ class _MyHomePageState extends State<MyHomePage> {
       return receitas;
     }
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
-        title: Text(widget.title, style: TextStyle(fontSize: 18.0)),
+        title: Row(
+          children: <Widget>[
+            Image.asset(
+              "assets/images/bg2.png",
+              fit: BoxFit.contain,
+              height: 32.0,
+            ),
+            Text(widget.title, style: TextStyle(fontSize: 18.0)),
+          ],
+        ),
+        flexibleSpace: Image(
+          image: AssetImage('assets/images/bg2.png'),
+          fit: BoxFit.cover,
+        ),
         actions: <Widget>[
           IconButton(
             icon: Icon(FontAwesomeIcons.heart),
@@ -79,87 +94,124 @@ class _MyHomePageState extends State<MyHomePage> {
             iconSize: 18.0,
           ),
         ],
+        leading: IconButton(
+          icon: Container(
+            color: Colors.white,
+            padding: EdgeInsets.all(8.0),
+            child: Icon(FontAwesomeIcons.bars, color: Color.fromRGBO(228, 89, 84, 1),)
+          ),
+          onPressed: () {
+            _scaffoldKey.currentState.openDrawer();
+          },
+        ),
+        backgroundColor: Color.fromRGBO(252, 152, 152, 1),
       ),
       drawer: Drawer(
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    height: 90.0,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50.0),
-                        topRight: Radius.circular(50.0),
-                        bottomRight: Radius.circular(50.0),
-                        bottomLeft: Radius.circular(50.0),
+            Container(
+              height: 240.0,
+              child: DrawerHeader(
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 12.0),
+                    Container(
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50.0),
+                          topRight: Radius.circular(50.0),
+                          bottomRight: Radius.circular(50.0),
+                          bottomLeft: Radius.circular(50.0),
+                        ),
+                      ),
+                      child: Image.asset(
+                        "assets/images/vovo-feliz.png",
+                        width: 100.0,
                       ),
                     ),
-                    child: Image.asset(
-                      "assets/images/vovo-feliz.png",
-                      width: 90.0,
-                    ),
-                  ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Text('Bem-vindo, '.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-                      Text('Emanuel'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-                      Text('!'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold))
-                    ],
+                    SizedBox(height: 12.0),
+                    Divider(color: Color.fromRGBO(255, 255, 255, 0.35),),
+                    SizedBox(height: 12.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Text('Olá,'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                        Text(' Emanuel Corrêa'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, .8), fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                        Text('!'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold))
+                      ],
+                    )
+                  ],
+                ),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/bg.png'),
+                    fit: BoxFit.cover
                   )
-                ],
+                ),
+                padding: EdgeInsets.all(10.0),
               ),
-              decoration: BoxDecoration(
-                color: Colors.pink,
-                gradient: LinearGradient(colors: <Color>[
-                  Colors.pink[300],
-                  Colors.pinkAccent
-                ]),
+            ),
+            Container(
+              height: MediaQuery.of(context).size.height * 0.739176,
+              transform: Matrix4.translationValues(0, -10, -23),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(0, 25.0, 0, 0),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/bg2.png'),
+                    fit: BoxFit.cover
+                  )
+                ),
+                child: Column(
+                  children: <Widget>[
+                    ListTile(
+                      title: Text('Minha Conta'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Painel()
+                        ));
+                      },
+                      trailing: Icon(FontAwesomeIcons.newspaper, color: Colors.white, size: 23.0),
+                    ),
+                    ListTile(
+                      title: Text('Minhas Receitas'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Painel()
+                        ));
+                      },
+                      trailing: Icon(FontAwesomeIcons.book, color: Colors.white, size: 23.0,),
+                    ),
+                    ListTile(
+                      title: Text('Suporte'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                      trailing: Icon(FontAwesomeIcons.envelopeOpenText, color: Colors.white, size: 23.0,),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 145.0, 0, 0),
+                      child: ListTile(
+                        title: Text('Sair'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                        // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                        onTap: () {
+                          // Update the state of the app.
+                          // ...
+                        },
+                        trailing: Icon(FontAwesomeIcons.signOutAlt, color: Colors.white, size: 25.0,),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              padding: EdgeInsets.all(10.0),
-            ),
-            ListTile(
-              title: Text('Minha Conta'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Painel()
-                ));
-              },
-              trailing: Icon(FontAwesomeIcons.newspaper, color: Color.fromRGBO(155, 42, 48, 1), size: 25.0),
-            ),
-            ListTile(
-              title: Text('Minhas Receitas'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => Painel()
-                ));
-              },
-              trailing: Icon(FontAwesomeIcons.book, color: Color.fromRGBO(155, 42, 48, 1), size: 25.0,),
-            ),
-            ListTile(
-              title: Text('Suporte'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-              trailing: Icon(FontAwesomeIcons.envelopeOpenText, color: Color.fromRGBO(155, 42, 48, 1), size: 25.0,),
-            ),
-            ListTile(
-              title: Text('Sair'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 16.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
-              trailing: Icon(FontAwesomeIcons.signOutAlt, color: Color.fromRGBO(155, 42, 48, 1), size: 25.0,),
             ),
           ],
         ),
@@ -188,8 +240,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: Card(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(4.0),
@@ -231,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               )
                             ),
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 7.0),
+                              padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[

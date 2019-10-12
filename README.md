@@ -1,4 +1,4 @@
-# receitas_vovo
+# Receitas da Vovó - Mobile
 
 A new Flutter project.
 
