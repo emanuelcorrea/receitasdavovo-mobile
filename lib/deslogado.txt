@@ -1,0 +1,57 @@
+drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(50.0),
+                        topRight: Radius.circular(50.0),
+                        bottomRight: Radius.circular(50.0),
+                        bottomLeft: Radius.circular(50.0),
+                      ),
+                    ),
+                    child: Image.asset(
+                      "assets/images/vovo-feliz.png",
+                      width: 100.0,
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text('Olá, '.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      Text('Visitante'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      Text('!'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold))
+                    ],
+                  )
+                ],
+              ),
+              decoration: BoxDecoration(
+                color: Colors.pink,
+              ),
+            ),
+            ListTile(
+              title: Text('ENTRAR / CADASTRAR'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+              onTap: () {
+
+              },
+            ),
+            ListTile(
+              title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+              // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+              onTap: () {
+                // Update the state of the app.
+                // ...
+              },
+              trailing: Icon(Icons.chat, color: Color.fromRGBO(155, 42, 48, 1), size: 35.0,),
+            ),
+          ],
+        ),
+      ),
