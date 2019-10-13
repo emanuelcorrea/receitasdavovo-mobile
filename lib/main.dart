@@ -134,7 +134,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                     SizedBox(height: 12.0),
-                    Divider(color: Color.fromRGBO(255, 255, 255, 0.35),),
+                    Divider(color: Color.fromRGBO(255, 255, 255, 0.9),),
                     SizedBox(height: 12.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -197,17 +197,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       trailing: Icon(FontAwesomeIcons.envelopeOpenText, color: Colors.white, size: 23.0,),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 145.0, 0, 0),
-                      child: ListTile(
-                        title: Text('Sair'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-                        // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
-                        onTap: () {
-                          // Update the state of the app.
-                          // ...
-                        },
-                        trailing: Icon(FontAwesomeIcons.signOutAlt, color: Colors.white, size: 25.0,),
-                      ),
+                    ListTile(
+                      title: Text('Sair'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                      trailing: Icon(FontAwesomeIcons.signOutAlt, color: Colors.white, size: 25.0,),
                     ),
                   ],
                 ),
