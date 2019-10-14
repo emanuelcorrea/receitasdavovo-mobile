@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(widget.title, style: TextStyle(fontSize: 18.0)),
           ],
         ),
+        centerTitle: true,
         flexibleSpace: Image(
           image: AssetImage('assets/images/bg2.png'),
           fit: BoxFit.cover,
@@ -225,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             } else {
               return Padding(
-                padding: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 0),
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                 child: ListView.builder(
                   itemCount: snapshot.data.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -237,8 +238,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: Card(
                         child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-                          mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             Padding(
                               padding: const EdgeInsets.all(4.0),
@@ -299,6 +300,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             )
                           ]
                         ),
+                        borderOnForeground: false,
                       ),
                     );
                   },
@@ -306,8 +308,8 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }
           },
-        )
-      ),
+        ),
+      )
     );
   }
 }

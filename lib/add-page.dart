@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 // import 'package:http/http.dart' as http;
@@ -67,7 +68,6 @@ class _AddDataState extends State<AddData> {
         centerTitle: true,
       ),
       body: Container(
-        padding: const EdgeInsets.fromLTRB(5.0, 10, 0 ,0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -84,12 +84,12 @@ class _AddDataState extends State<AddData> {
                   ),
                 ],
               ),
-              SizedBox(height: 45.0),
+              SizedBox(height: 25.0),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 child: TextField(
                   controller: controllerNome,
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black, fontSize: 15.0),
                   decoration: InputDecoration(
                     labelStyle: TextStyle(
                       color: Colors.pink,
@@ -110,12 +110,12 @@ class _AddDataState extends State<AddData> {
                   ),
                 ),
               ),
-              SizedBox(height: 14.0),
+              SizedBox(height: 10.0),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                 child: TextField(
                   controller: controllerCategoria,
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black, fontSize: 15.0),
                   decoration: InputDecoration(
                     labelStyle: TextStyle(
                       color: Colors.pink,
@@ -131,8 +131,65 @@ class _AddDataState extends State<AddData> {
                         topRight: Radius.circular(50.0),
                       )
                     ),
-                    labelText: "Categorias da Receita",
-                    hintText: 'Ex: Milkshake | Suco'
+                    labelText: "Categoria da Receita",
+                    hintText: 'Ex: Milkshake',
+                    hintStyle: TextStyle(fontSize: 15.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 15.0),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50.0),
+                      topLeft: Radius.circular(50.0),
+                      bottomRight: Radius.circular(50.0),
+                      topRight: Radius.circular(50.0),
+                    )
+                  ),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text('Ingredientes', style: TextStyle(color: Colors.white)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Icon(FontAwesomeIcons.plus, color: Colors.white,),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 0),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  height: 50.0,
+                  decoration: BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(50.0),
+                      topLeft: Radius.circular(50.0),
+                      bottomRight: Radius.circular(50.0),
+                      topRight: Radius.circular(50.0),
+                    )
+                  ),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text('Modo de Preparo', style: TextStyle(color: Colors.white)),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                          child: Icon(FontAwesomeIcons.plus, color: Colors.white,),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -153,17 +210,20 @@ class _AddDataState extends State<AddData> {
                     ],
                   ),
                   borderSide: BorderSide(
-                    color: Colors.pink
+                    color: Colors.pink,
                   ),
                   textColor: Colors.pinkAccent,
                   highlightedBorderColor: Colors.pink,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50)
+                  ),
                 ),
               ),
               SizedBox(
                 height: 14.0,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 0),
+                padding: const EdgeInsets.fromLTRB(16.0, 20.0, 16.0, 50.0),
                 child: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
@@ -183,7 +243,7 @@ class _AddDataState extends State<AddData> {
                     padding: EdgeInsets.all(20),
                     child: Text(
                       "CADASTRAR",
-                      style: TextStyle(fontSize: 17.0, color: Colors.white),
+                      style: TextStyle(fontSize: 16.0, color: Colors.white),
                     ),
                     onPressed: () {},
                     shape: RoundedRectangleBorder(
