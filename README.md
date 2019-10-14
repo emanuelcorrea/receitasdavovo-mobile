@@ -14,8 +14,6 @@ This is my first mobile app, done with a little hurry 'cause of the time.
 
 I'm learning Flutter for about two or three weeks, studying at home & in my course (Técnico em informática, SENAC).
 
-## Curious
-
 
 ## Installers
 
