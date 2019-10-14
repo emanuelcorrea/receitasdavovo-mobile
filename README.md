@@ -55,7 +55,7 @@ $ flutter run
 
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project...
 
-Email-me: emanuel.silvati1@gmail.com
+Email-me: emanuel.silvati@gmail.com
 
 Connect with me at [LinkedIn](https://www.linkedin.com/in/emanuel-corrêa-b836a9170/)
 
