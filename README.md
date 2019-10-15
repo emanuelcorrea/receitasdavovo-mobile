@@ -19,7 +19,7 @@ I'm learning Flutter for about two or three weeks, studying at home & in my cour
 
 If you want to test the App in the Production mode, click down:
 
-[Android .apk installer](https://drive.google.com/open?id=1eJbS2OJMeB9YY2xRNJh9KHh1ir6MNX7K)
+[Android .apk installer](https://drive.google.com/file/d/1WAbLLC1uiooPDv6WOIILoa10_BUNxezs/view)
 
 iOS .ipa installer: Soon!
 

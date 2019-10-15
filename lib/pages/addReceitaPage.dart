@@ -6,12 +6,12 @@ import 'package:image_picker/image_picker.dart';
 
 // import 'package:http/http.dart' as http;
 
-class AddData extends StatefulWidget {
+class AddReceitaPage extends StatefulWidget {
   @override
-  _AddDataState createState() => _AddDataState();
+  _AddReceitaPageState createState() => _AddReceitaPageState();
 }
 
-class _AddDataState extends State<AddData> {
+class _AddReceitaPageState extends State<AddReceitaPage> {
   TextEditingController controllerNome = TextEditingController();
   TextEditingController controllerImg = TextEditingController();
   TextEditingController controllerCategoria = TextEditingController();
