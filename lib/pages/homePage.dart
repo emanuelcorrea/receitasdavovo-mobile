@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       var jsonData = json.decode(respose.body);
 
       for (var u in jsonData) {
-        Receita receita = Receita(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"]);
+        Receita receita = Receita.receita(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"]);
 
         receitas.add(receita);
       }
@@ -51,7 +51,6 @@ class _HomePageState extends State<HomePage> {
             Text('Página Inicial', style: TextStyle(fontSize: 18.0)),
           ],
         ),
-        centerTitle: true,
         flexibleSpace: Image(
           image: AssetImage('assets/images/bg2.png'),
           fit: BoxFit.cover,
@@ -146,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                     ListTile(
                       title: Text('Minha Conta'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
                       onTap: () {
-                        Navigator.pushNamed(context, '/painel');
+                        Navigator.popAndPushNamed(context, '/painel');
                       },
                       trailing: Icon(FontAwesomeIcons.newspaper, color: Colors.white, size: 23.0),
                     ),
@@ -154,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       title: Text('Minhas Receitas'.toUpperCase(), style: TextStyle(color: Colors.white, fontSize: 15.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
                       // title: Text('SUPORTE'.toUpperCase(), style: TextStyle(color: Color.fromRGBO(155, 42, 48, 1), fontSize: 17.0, fontFamily: 'RobotoMono', fontWeight: FontWeight.bold)),
                       onTap: () {
-                        Navigator.pushNamed(context, '/painel');
+                        Navigator.popAndPushNamed(context, '/painel');
                       },
                       trailing: Icon(FontAwesomeIcons.book, color: Colors.white, size: 23.0,),
                     ),

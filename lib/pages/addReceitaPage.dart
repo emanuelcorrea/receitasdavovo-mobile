@@ -1,10 +1,12 @@
-import 'dart:io';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'dart:io';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
-
-// import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
+import 'package:receitas_vovo/models/Receita.dart';
+import 'package:path/path.dart';
 
 class AddReceitaPage extends StatefulWidget {
   @override
@@ -13,9 +15,29 @@ class AddReceitaPage extends StatefulWidget {
 
 class _AddReceitaPageState extends State<AddReceitaPage> {
   TextEditingController controllerNome = TextEditingController();
-  TextEditingController controllerImg = TextEditingController();
   TextEditingController controllerCategoria = TextEditingController();
-  TextEditingController controllerPontuacao = TextEditingController();
+  File imgFile; 
+  String imgName = "";
+  Receita receita;
+  String basename(String path) => context.basename(path);
+  final String phpEndPoint = 'http://www.sitedomanu.com.br/api/json/add-image.php;';
+
+  Future adicionar() async {
+    var url="http://www.sitedomanu.com.br/api/json/add-produto.php";
+    http.post(url, body: {
+      "nome": controllerNome.text,
+      "img" : controllerNome.text + '.jpg',
+      "categoria": controllerCategoria.text,
+    });
+  }
+
+  void pegarImagem(BuildContext context, ImageSource src) async {
+    imgFile = await ImagePicker.pickImage(source: src);
+
+    imgName = imgFile.path.split("/").last;
+
+    Navigator.pop(context);
+  }
 
  void abrirImagePicker(BuildContext context) {
     showModalBottomSheet(
@@ -30,13 +52,13 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
               Text('Escolha uma imagem', style: TextStyle(color: Colors.white)),
               SizedBox(height: 10.0),
               FlatButton(
-                onPressed: () {
+                onPressed: () async {
                   pegarImagem(context, ImageSource.camera);
                 },
                 child: Text('Usar a camêra!', style: TextStyle(color: Colors.white)),
               ),
               FlatButton(
-                onPressed: () {
+                onPressed: () async {
                   pegarImagem(context, ImageSource.gallery);
                 },
                 child: Text('Pegar da galeria!', style: TextStyle(color: Colors.white)),
@@ -48,12 +70,18 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
     );
   }
 
-  void pegarImagem(BuildContext context, ImageSource src) {
-    ImagePicker.pickImage(source: src, maxWidth: 400.0).then(
-      (File img) {
-        Navigator.pop(context);
-      }
-    );
+  void upload() {
+    String base64Image = base64Encode(imgFile.readAsBytesSync());
+    String fileName = controllerNome.text + '.jpg';
+
+    http.post(phpEndPoint, body: {
+      "image": base64Image,
+      "name": fileName,
+    }).then((res) {
+      print(res.statusCode);
+    }).catchError((err) {
+      print(err);
+    });
   }
 
   @override
@@ -245,7 +273,10 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
                       "CADASTRAR",
                       style: TextStyle(fontSize: 16.0, color: Colors.white),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      upload();
+                      adicionar();
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
                     ),
