@@ -195,67 +195,115 @@ class _HomePageState extends State<HomePage> {
                 );
               },
               child: Card(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                child: Stack(
+                  alignment: Alignment.topCenter,
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: EdgeInsets.all(5.0),
                       child: SizedBox(
-                        child: Image.asset(
-                          "assets/images/receitas/${receitas[index].img}",
-                        ),
-                        height: 200.0,
-                        width: 350,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(4.0, 0, 0, 0),
-                      child: Text(receitas[index].dia, style: TextStyle(
-                        fontStyle: FontStyle.italic,
-                        color: Colors.grey,
-                        fontSize: 11.0
-                      )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(8.0, 5.0, 0, 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text(receitas[index].nome, style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,)),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
-                            child: Row(
-                              children: <Widget>[
-                                Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                Icon(Icons.star, size: 15.0, color: Colors.yellow)
-                              ],
-                            ),
+                        child: Hero(
+                          tag: receitas[index].nome,
+                          child: Image.asset(
+                            "assets/images/receitas/${receitas[index].img}",
+                            fit: BoxFit.fill,
                           ),
-                        ],
-                      )
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(
-                            child: OutlineButton(
-                              onPressed: () {},
-                              borderSide: BorderSide(
-                                color: Colors.pink[100]
-                              ),
-                              child: Text(receitas[index].categoria, style: TextStyle(color: Colors.grey, fontSize: 13.0)),
-                            ),
-                            height: 20.0,
-                          )
-                        ],
+                        ),
+                        height: 227.0,
                       ),
-                    )
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Center(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10.0),
+                              child: Container(
+                                color: Colors.black.withOpacity(.2),
+                                padding: EdgeInsets.all(5.0),
+                                child: Text(receitas[index].dia, style: TextStyle(
+                                  fontStyle: FontStyle.normal,
+                                  color: Colors.white,
+                                  fontSize: 11.0,
+                                  fontWeight: FontWeight.bold
+                                )),
+                              ),
+                            ),
+                            Container(
+                              transform: Matrix4.translationValues(-5, -15, 1),
+                              child: Padding(
+                                padding: const EdgeInsets.only(right: 15.0),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Column(
+                                    children: <Widget>[
+                                      Icon(FontAwesomeIcons.heart, color: Colors.white)
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Center(
+                              child: Container(
+                                padding: EdgeInsets.only(top: 35.0),
+                                decoration: BoxDecoration(
+                                  border: BorderDirectional(bottom: BorderSide(color: Colors.white))
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+                                  child: Container(
+                                    color: Colors.black.withOpacity(.02),
+                                    padding: EdgeInsets.all(5.0),
+                                    child: Text(
+                                      receitas[index].nome.toUpperCase(),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 26.0,
+                                        fontWeight: FontWeight.w300,
+                                      )
+                                    ),
+                                  ),
+                                )
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(top: 8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(Icons.star, color: Colors.yellow, size: 15.0,),
+                                  Icon(Icons.star, color: Colors.yellow, size: 15.0,),
+                                  Icon(Icons.star, color: Colors.yellow, size: 15.0,),
+                                  Icon(Icons.star, color: Colors.yellow, size: 15.0,),
+                                  Icon(Icons.star, color: Colors.yellow, size: 15.0,),
+                                ],
+                              ),
+                            ),
+                            // Padding(
+                            //   padding: const EdgeInsets.fromLTRB(0, 0, 0, 8.0),
+                            //   child: Row(
+                            //     mainAxisAlignment: MainAxisAlignment.center,
+                            //     children: <Widget>[
+                            //       SizedBox(
+                            //         child: OutlineButton(
+                            //           onPressed: () {},
+                            //           borderSide: BorderSide(
+                            //             color: Colors.pink[100]
+                            //           ),
+                            //           child: Text(receitas[index].categoria, style: TextStyle(color: Colors.grey, fontSize: 13.0)),
+                            //         ),
+                            //         height: 20.0,
+                            //       )
+                            //     ],
+                            //   ),
+                            // )
+                          ],
+                        ),
+                      ),
+                    ),
                   ]
                 ),
                 borderOnForeground: false,

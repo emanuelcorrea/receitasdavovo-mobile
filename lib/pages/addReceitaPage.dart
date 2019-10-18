@@ -1,5 +1,4 @@
-import 'dart:convert';
-
+import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:receitas_vovo/models/Receita.dart';
 import 'package:path/path.dart';
+import 'package:image/image.dart' as Img;
 
 class AddReceitaPage extends StatefulWidget {
   @override
@@ -34,12 +34,37 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
   void pegarImagem(BuildContext context, ImageSource src) async {
     imgFile = await ImagePicker.pickImage(source: src);
 
-    imgName = imgFile.path.split("/").last;
+    Img.Image image = Img.decodeImage(imgFile.readAsBytesSync());
+
+    imgFile.writeAsBytesSync(Img.encodeJpg(image, quality: 85));
+
+    setState(() {
+     imgFile = imgFile; 
+    });
 
     Navigator.pop(context);
   }
 
- void abrirImagePicker(BuildContext context) {
+  
+  Future upload(File imageFile) async {
+    var stream = http.ByteStream(DelegatingStream.typed(imageFile.openRead()));
+    var length = await imageFile.length();
+    var uri = Uri.parse('http://sitedomanu.com.br/api/json/add-produto.php');
+
+    var request = http.MultipartRequest("POST", uri);
+
+    var multipartFile = http.MultipartFile("imagem_item", stream, length, filename: basename(imageFile.path));
+
+    request.fields['nome'] = controllerNome.text;
+    request.fields['categoria'] = controllerCategoria.text;
+
+    request.files.add(multipartFile);
+
+    var response = await request.send();
+    print(response.statusCode);
+  }
+
+  void abrirImagePicker(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
@@ -68,20 +93,6 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
         );
       },
     );
-  }
-
-  void upload() {
-    String base64Image = base64Encode(imgFile.readAsBytesSync());
-    String fileName = controllerNome.text + '.jpg';
-
-    http.post(phpEndPoint, body: {
-      "image": base64Image,
-      "name": fileName,
-    }).then((res) {
-      print(res.statusCode);
-    }).catchError((err) {
-      print(err);
-    });
   }
 
   @override
@@ -274,8 +285,9 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
                       style: TextStyle(fontSize: 16.0, color: Colors.white),
                     ),
                     onPressed: () {
-                      upload();
-                      adicionar();
+                      // adicionar();
+                      upload(imgFile);
+                      // Navigator.pop(context);
                     },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),

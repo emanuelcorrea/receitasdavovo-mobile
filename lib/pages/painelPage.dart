@@ -63,106 +63,108 @@ class _PainelPageState extends State<PainelPage> {
               return ListView.builder(
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
-                  return Card(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          child: Row(
-                            children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0, 0),
-                                child: SizedBox(
-                                  child: Image.asset(
-                                    "assets/images/receitas/${snapshot.data[index].img}",
-                                    height: 90.0,
-                                    width: 130.0,
+                  return GestureDetector(
+                    child: Card(
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            child: Row(
+                              children: <Widget>[
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0, 0),
+                                  child: SizedBox(
+                                    child: Image.asset(
+                                      "assets/images/receitas/${snapshot.data[index].img}",
+                                      height: 90.0,
+                                      width: 130.0,
+                                    ),
                                   ),
                                 ),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(12.0, 6.0, 0, 8.0),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text(snapshot.data[index].nome, style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,)),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(0, 10.0, 8.0, 0),
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                            Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                            Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                            Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                            Icon(Icons.star, size: 15.0, color: Colors.yellow)
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 7.0),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            SizedBox(
+                                              child: OutlineButton(
+                                                onPressed: () {},
+                                                borderSide: BorderSide(
+                                                  color: Colors.pink[100]
+                                                ),
+                                                child: Text(snapshot.data[index].categoria, style: TextStyle(color: Colors.grey, fontSize: 10.0)),
+                                              ),
+                                              height: 20.0,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )
+                          ),
+                          Column(
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 12.0, 8.0, 0),
+                                child: Container(
+                                  height: 35.0,
+                                  width: 35.0,
+                                  decoration: BoxDecoration(
+                                    color: Colors.pink,
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(50.0),
+                                      topLeft: Radius.circular(50.0),
+                                      bottomRight: Radius.circular(50.0),
+                                      topRight: Radius.circular(50.0),
+                                    )
+                                  ),
+                                  child: Icon(FontAwesomeIcons.trashAlt, color: Colors.white, size: 16.0),
+                                )
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(12.0, 6.0, 0, 8.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(snapshot.data[index].nome, style: TextStyle(color: Colors.grey, fontStyle: FontStyle.italic,)),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 10.0, 8.0, 0),
-                                      child: Row(
-                                        children: <Widget>[
-                                          Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                          Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                          Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                          Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                          Icon(Icons.star, size: 15.0, color: Colors.yellow)
-                                        ],
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 7.0),
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          SizedBox(
-                                            child: OutlineButton(
-                                              onPressed: () {},
-                                              borderSide: BorderSide(
-                                                color: Colors.pink[100]
-                                              ),
-                                              child: Text(snapshot.data[index].categoria, style: TextStyle(color: Colors.grey, fontSize: 10.0)),
-                                            ),
-                                            height: 20.0,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
+                                padding: const EdgeInsets.fromLTRB(0, 8.0, 8.0, 8.0),
+                                child: Container(
+                                  height: 35.0,
+                                  width: 35.0,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(252, 152, 152, 1),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(50.0),
+                                      topLeft: Radius.circular(50.0),
+                                      bottomRight: Radius.circular(50.0),
+                                      topRight: Radius.circular(50.0),
+                                    )
+                                  ),
+                                  child: Icon(FontAwesomeIcons.edit, color: Colors.white, size: 16.0),
+                                )
+                              ),
                             ],
-                          )
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 12.0, 8.0, 0),
-                              child: Container(
-                                height: 35.0,
-                                width: 35.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.pink,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(50.0),
-                                    topLeft: Radius.circular(50.0),
-                                    bottomRight: Radius.circular(50.0),
-                                    topRight: Radius.circular(50.0),
-                                  )
-                                ),
-                                child: Icon(FontAwesomeIcons.trashAlt, color: Colors.white, size: 16.0),
-                              )
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 8.0, 8.0, 8.0),
-                              child: Container(
-                                height: 35.0,
-                                width: 35.0,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(252, 152, 152, 1),
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(50.0),
-                                    topLeft: Radius.circular(50.0),
-                                    bottomRight: Radius.circular(50.0),
-                                    topRight: Radius.circular(50.0),
-                                  )
-                                ),
-                                child: Icon(FontAwesomeIcons.edit, color: Colors.white, size: 16.0),
-                              )
-                            ),
-                          ],
-                        ),
-                      ]
+                          ),
+                        ]
+                      ),
                     ),
                   );
                 },

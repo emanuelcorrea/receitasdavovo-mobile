@@ -139,15 +139,18 @@ class _ReceitaPageState extends State<ReceitaPage> {
           children: <Widget>[
             Container(
               child: SizedBox(
-                child: Image.asset(
-                  "assets/images/receitas/${widget.receita.img}",
+                child: Hero(
+                  tag: widget.receita.nome,
+                  child: Image.asset(
+                    "assets/images/receitas/${widget.receita.img}",
+                  ),
                 ),
-                height: 200.0,
+                height: 230.0,
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[
                   BoxShadow(
-                    color: Color.fromRGBO(0, 0, 0, .5),
+                    color: Color.fromRGBO(0, 0, 0, .2),
                     offset: Offset(5.0, 2.0),
                     blurRadius: 10.0
                   )
@@ -177,13 +180,13 @@ class _ReceitaPageState extends State<ReceitaPage> {
                 children: <Widget>[
                   Container(
                     height: 50.0,
-                    child: Text("${widget.receita.nome}".toUpperCase(), style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300),)
+                    child: Text("${widget.receita.nome}".toUpperCase(), style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300),)
                   ),
                 ],
               )
             ),
             Container(
-              transform: Matrix4.translationValues(0, -20.0, 0),
+              transform: Matrix4.translationValues(0, -14.0, 0),
               height: 5.0,
               width: 100.0,
               decoration: BoxDecoration(
@@ -204,7 +207,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
               child: Container(),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
