@@ -143,9 +143,9 @@ class _ReceitaPageState extends State<ReceitaPage> {
                   tag: widget.receita.nome,
                   child: Image.asset(
                     "assets/images/receitas/${widget.receita.img}",
+                    fit: BoxFit.contain,
                   ),
                 ),
-                height: 230.0,
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[

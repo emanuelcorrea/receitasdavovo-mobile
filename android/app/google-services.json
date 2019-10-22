@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "364827597646",
+    "firebase_url": "https://receitasdavovo-ed0c0.firebaseio.com",
+    "project_id": "receitasdavovo-ed0c0",
+    "storage_bucket": "receitasdavovo-ed0c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:364827597646:android:394ed4b60bbe5fb48ddc1f",
+        "android_client_info": {
+          "package_name": "com.example.receitas_vovo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "364827597646-5nd92g2ivjufks75ja907jo9inve1vr0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs9saNzA05Pfreha67e4X4AQkrAZx78EU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "364827597646-5nd92g2ivjufks75ja907jo9inve1vr0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
