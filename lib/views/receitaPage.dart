@@ -142,7 +142,6 @@ class _ReceitaPageState extends State<ReceitaPage> {
                 child: Image.asset(
                   "assets/images/receitas/${widget.receita.img}",
                 ),
-                height: 200.0,
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[

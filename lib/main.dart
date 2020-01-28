@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:receitas_vovo/pages/homePage.dart';
-import 'package:receitas_vovo/pages/painelPage.dart';
-import 'package:receitas_vovo/pages/AddReceitaPage.dart';
+import 'package:receitas_vovo/views/homePage.dart';
+import 'package:receitas_vovo/views/painelPage.dart';
+import 'package:receitas_vovo/views/AddReceitaPage.dart';
 
 void main() => runApp(MyApp());
 
