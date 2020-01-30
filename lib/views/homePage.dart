@@ -112,12 +112,10 @@ class _HomePageState extends State<HomePage> {
                               color: Color.fromRGBO(255, 138, 138, 1.0)
                             )
                           ),
-                          child: SizedBox(
                             child: Image.asset(
                               "assets/images/receitas/${receita.img}",
                             ),
                           ),
-                        ),
                         Container(
                           height: 40.0,
                           alignment: Alignment.center,

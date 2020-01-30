@@ -139,9 +139,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
           children: <Widget>[
             Container(
               child: SizedBox(
-                child: Image.asset(
-                  "assets/images/receitas/${widget.receita.img}",
-                ),
+                child: Image.asset( "assets/images/receitas/${widget.receita.img}"),
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[
