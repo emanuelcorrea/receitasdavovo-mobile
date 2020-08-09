@@ -139,7 +139,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
           children: <Widget>[
             Container(
               child: SizedBox(
-                child: Image.asset( "assets/images/receitas/${widget.receita.img}"),
+                child: Image.network("http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${widget.receita.slug}"),
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[
@@ -174,7 +174,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
                 children: <Widget>[
                   Container(
                     height: 50.0,
-                    child: Text("${widget.receita.nome}".toUpperCase(), style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w300),)
+                    child: Text("${widget.receita.nome}".toUpperCase(), style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.w300),)
                   ),
                 ],
               )

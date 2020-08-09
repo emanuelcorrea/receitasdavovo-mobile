@@ -15,14 +15,14 @@ class _PainelPageState extends State<PainelPage> {
 
   Future<List<Receitas>> _getReceitas() async {
     var respose = await http.get(
-      Uri.encodeFull("http://programando.dev/api/json/receitas_vovo.php"),
+      Uri.encodeFull("http://receitas.emanuelcorrea.com.br/api/json/receitas_vovo.php"),
       headers: {"Accept" : "Application/json"}
     );
 
     var jsonData = json.decode(respose.body);
 
     for (var u in jsonData) {
-      Receitas receita = Receitas(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"]);
+      Receitas receita = Receitas(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"], u["slug"]);
 
       receitas.add(receita);
     }
@@ -199,6 +199,7 @@ class Receitas {
   final String preparo;
   final String dia;
   final String color;
+  final String slug;
   
-  Receitas(this.idreceita, this.nome, this.img, this.ingredientes, this.categoria, this.preparo, this.dia, this.color);
+  Receitas(this.idreceita, this.nome, this.img, this.ingredientes, this.categoria, this.preparo, this.dia, this.color, this.slug);
 }

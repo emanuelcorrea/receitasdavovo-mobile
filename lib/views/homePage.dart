@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<List<Receita>> _getReceitas() async {
     var respose = await http.get(
-      Uri.encodeFull("http://sitedomanu.com.br/api/json/receitas_vovo.php"),
+      Uri.encodeFull("http://receitas.emanuelcorrea.com.br/api/json/receitas_vovo.php"),
       headers: {"Accept" : "Application/json"}
     );
 
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       var jsonData = json.decode(respose.body);
 
       for (var u in jsonData) {
-        Receita receita = Receita(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"]);
+        Receita receita = Receita(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"], u["slug"]);
 
         receitas.add(receita);
       }
@@ -112,8 +112,8 @@ class _HomePageState extends State<HomePage> {
                               color: Color.fromRGBO(255, 138, 138, 1.0)
                             )
                           ),
-                            child: Image.asset(
-                              "assets/images/receitas/${receita.img}",
+                            child: Image.network(
+                              "http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${receita.slug}.jpg",
                             ),
                           ),
                         Container(
