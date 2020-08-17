@@ -57,7 +57,7 @@ You can send how many PR's do you want, I'll be glad to analyse and accept them!
 
 Email-me: emanuel.silvati@gmail.com
 
-Connect with me at [LinkedIn](https://www.linkedin.com/in/emanuel-corrêa-b836a9170/)
+Connect with me at [LinkedIn](https://www.linkedin.com/in/emanuel-correa/)
 
 Thank you!
 
