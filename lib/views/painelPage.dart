@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:core';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 
 class PainelPage extends StatefulWidget {
   @override
@@ -54,10 +55,50 @@ class _PainelPageState extends State<PainelPage> {
           future: _getReceitas(),
           builder: (BuildContext  context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return Container(
-                child: Center(
-                  child: Text("Loading..."),
-                ),
+              return ListView.builder(
+                itemCount: 6,
+                itemBuilder: (BuildContext context, int index) {
+                  double containerWidth = 280;
+                  double containerHeight = 15;
+
+                  return Shimmer.fromColors(
+                    highlightColor: Colors.white,
+                    baseColor: Colors.grey[300],
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5),
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 7.5),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: 100,
+                              width: 100 ,
+                              color: Colors.grey,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  height: containerHeight,
+                                  width: containerWidth,
+                                  color: Colors.grey
+                                ),
+                                SizedBox(height: 5),
+                                Container(
+                                  height: containerHeight,
+                                  width: containerWidth,
+                                  color: Colors.grey
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ),
+                  );
+                },
               );
             } else {
               return ListView.builder(

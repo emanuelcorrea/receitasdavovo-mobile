@@ -22,6 +22,8 @@ var rotas = <String, WidgetBuilder> {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    
     return MaterialApp(
       title: 'Receitas da Vovó',
       theme: ThemeData(

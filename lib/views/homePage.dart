@@ -42,16 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Row(
-          children: <Widget>[
-            Image.asset(
-              "assets/images/bg2.png",
-              fit: BoxFit.contain,
-              height: 32.0,
-            ),
-            Text('Página Inicial', style: TextStyle(fontSize: 18.0)),
-          ],
-        ),
+        title: Text('Página Inicial', style: TextStyle(fontSize: 18.0)),
         centerTitle: true,
         flexibleSpace: Image(
           image: AssetImage('assets/images/bg2.png'),
@@ -89,7 +80,7 @@ class _HomePageState extends State<HomePage> {
             final Receita receita = receitas[index];
             
             return Container(
-              margin: EdgeInsets.fromLTRB(0, 0, 0, 20.0),
+              margin: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(

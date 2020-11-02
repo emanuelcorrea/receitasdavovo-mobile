@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:receitas_vovo/models/Receita.dart';
 import 'dart:core';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ReceitaPage extends StatefulWidget {
   final Receita receita;
@@ -103,17 +104,24 @@ class _ReceitaPageState extends State<ReceitaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        flexibleSpace: Image(
-          image: AssetImage('assets/images/bg2.png'),
-          fit: BoxFit.cover,
+        elevation: 0.0,
+        bottomOpacity: 0.0,
+        iconTheme: IconThemeData(
+          color: Colors.pink, //change your color here
         ),
-        title: Text('Receita'),
+        toolbarHeight: 70,
+        backgroundColor: Colors.grey[100],
+        title: Shimmer.fromColors(
+          highlightColor: Colors.pink,
+          baseColor: Colors.pink[200],
+          child: Text('Detalhes da receita', style: TextStyle(fontWeight: FontWeight.w300))
+        ),
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(10.0, 9.0, 10.0, 9.0),
             child: Container(
-              width: 39.0,
+              width: 50.0,
+              height: 50.0,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -126,7 +134,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
               child: IconButton(
                 icon: Icon(FontAwesomeIcons.heart, color: loved ? Colors.grey : Color.fromRGBO(252, 152, 152, 1)),
                 onPressed: () {},
-                iconSize: 20.0,
+                iconSize: 20.0
               ),
             ),
           ),
