@@ -75,7 +75,11 @@ class _PainelPageState extends State<PainelPage> {
                                 padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0, 0),
                                 child: SizedBox(
                                   child: Image.network(
+<<<<<<< HEAD
                                     "http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${snapshot.data[index].slug}",
+=======
+                                    "http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${snapshot.data[index].slug}.jpg",
+>>>>>>> feature
                                     height: 90.0,
                                     width: 130.0,
                                   ),
