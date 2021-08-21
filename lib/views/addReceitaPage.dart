@@ -29,13 +29,13 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
             children: <Widget>[
               Text('Escolha uma imagem', style: TextStyle(color: Colors.white)),
               SizedBox(height: 10.0),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   pegarImagem(context, ImageSource.camera);
                 },
                 child: Text('Usar a camêra!', style: TextStyle(color: Colors.white)),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   pegarImagem(context, ImageSource.gallery);
                 },
@@ -196,8 +196,19 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
               SizedBox(height: 14.0),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                child: OutlineButton(
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    side: BorderSide(
+                      color: Colors.pink,
+                    ),
+                    textStyle: TextStyle(
+                      color: Colors.pinkAccent,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50)
+                    ),
+                  ),
                   onPressed: () {
                     abrirImagePicker(context);
                   },
@@ -208,14 +219,6 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
                       SizedBox(width: 10.0),
                       Text('Escolha uma imagem!')
                     ],
-                  ),
-                  borderSide: BorderSide(
-                    color: Colors.pink,
-                  ),
-                  textColor: Colors.pinkAccent,
-                  highlightedBorderColor: Colors.pink,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50)
                   ),
                 ),
               ),
@@ -239,17 +242,21 @@ class _AddReceitaPageState extends State<AddReceitaPage> {
                       topRight: Radius.circular(50.0),
                     )
                   ),
-                  child: FlatButton(
-                    padding: EdgeInsets.all(20),
+                  child: TextButton(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.all(20),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0),
+                      ),
+                      textStyle: TextStyle(
+                        color: Colors.transparent
+                      ),
+                    ),
                     child: Text(
                       "CADASTRAR",
                       style: TextStyle(fontSize: 16.0, color: Colors.white),
                     ),
                     onPressed: () {},
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                    ),
-                    color: Colors.transparent,
                   ),
                 ),
               ),

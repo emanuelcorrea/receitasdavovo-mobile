@@ -3,6 +3,7 @@ import 'package:receitas_vovo/models/Receita.dart';
 import 'dart:core';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:html/parser.dart';
 
 class ReceitaPage extends StatefulWidget {
   final Receita receita;
@@ -30,28 +31,33 @@ class _ReceitaPageState extends State<ReceitaPage> {
 
     strings = index.split('|');
     
-    List<Widget> list = List<Widget>();
+    List<Widget> list = [];
     
     for(var i = 1; i < strings.length; i++){
+      String prepare = parse(strings[i]).documentElement.text.replaceAll("\n", " ");
+      
       list.add(
         Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                strutStyle: StrutStyle(height: 2.0),
-                text: TextSpan(
-                  style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black),
-                  children: <TextSpan>[
-                    TextSpan(text: '$i. ', style: TextStyle(fontWeight: FontWeight.w300, fontSize: 21.0, color: Colors.pink)),
-                    TextSpan(text: '${strings[i]}', style: TextStyle()),
-                  ],
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('$i. ', style: TextStyle(
+                  fontWeight: FontWeight.w300, 
+                  fontSize: 21.0, 
+                  color: Colors.pink,
+                )),
+                Flexible(
+                  child: Text('$prepare', style: TextStyle(
+                    fontWeight: FontWeight.w300, 
+                    color: Colors.black,
+                    fontSize: 16.5,
+                    height: 1.7
+                  )),
                 ),
-              ),
+              ],
             ),
-            SizedBox(height: 10.0),
+            SizedBox(height: 15.0),
           ],
         ),
       );
@@ -68,28 +74,28 @@ class _ReceitaPageState extends State<ReceitaPage> {
 
     strings = index.split('|');
     
-    List<Widget> list = List<Widget>();
+    List<Widget> list = [];
     
     for(var i = 0; i < strings.length; i++){
+      String ingredient = parse(strings[i]).documentElement.text;
+      
       list.add(
-        Column(
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topLeft,
-              child: RichText(
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.left,
-                strutStyle: StrutStyle(height: 2.0),
-                text: TextSpan(
-                  style: TextStyle(fontWeight: FontWeight.w300, color: Colors.black, textBaseline: TextBaseline.ideographic),
-                  children: <TextSpan>[
-                    TextSpan(text: ' •   ', style: TextStyle(fontWeight: FontWeight.w300, fontSize: 28.0, color: Colors.pink, )),
-                    TextSpan(text: '${strings[i]}', style: TextStyle()),
-                  ],
-                ),
-              ),
+        Row(
+          children: [
+            Text('• ', style: TextStyle(
+              fontWeight: FontWeight.w300, 
+              fontSize: 30.0,
+              color: Color.fromRGBO(252, 152, 152, 1),
+              height: 1.5
+            )),
+            Flexible(
+              child: Text('$ingredient', style: TextStyle(
+                fontWeight: FontWeight.w300, 
+                color: Colors.black,
+                fontSize: 16.5,
+                height: 1.5 
+              )),
             ),
-            SizedBox(height: 5.0)
           ],
         ),
       );
@@ -215,7 +221,6 @@ class _ReceitaPageState extends State<ReceitaPage> {
                 children: <Widget>[
                   Container(
                     height: 50.0,
-                    width: 250.0,
                     padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(210, 210, 210, .2),
@@ -251,7 +256,6 @@ class _ReceitaPageState extends State<ReceitaPage> {
                   SizedBox(height: 20.0),
                   Container(
                     height: 50.0,
-                    width: 250.0,
                     padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       color: Color.fromRGBO(210, 210, 210, .2),

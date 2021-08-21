@@ -147,10 +147,12 @@ class _PainelPageState extends State<PainelPage> {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: <Widget>[
                                           SizedBox(
-                                            child: OutlineButton(
+                                            child: OutlinedButton(
                                               onPressed: () {},
-                                              borderSide: BorderSide(
-                                                color: Colors.pink[100]
+                                              style: OutlinedButton.styleFrom(
+                                                side: BorderSide(
+                                                  color: Colors.pink[100]
+                                                ),
                                               ),
                                               child: Text(snapshot.data[index].categoria, style: TextStyle(color: Colors.grey, fontSize: 10.0)),
                                             ),
