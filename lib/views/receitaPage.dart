@@ -147,7 +147,7 @@ class _ReceitaPageState extends State<ReceitaPage> {
           children: <Widget>[
             Container(
               child: SizedBox(
-                child: Image.network("http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${widget.receita.slug}"),
+                child: Image.network("http://emanuelcorrea.com/receitasdavovo/assets/images/receitas/${widget.receita.slug}"),
               ),
               decoration: BoxDecoration(
                 boxShadow: <BoxShadow>[

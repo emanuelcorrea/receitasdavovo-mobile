@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'dart:core';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:receitas_vovo/widgets/drawer_menu.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -18,9 +19,11 @@ class _HomePageState extends State<HomePage> {
 
   List<Receita> receitas = [];
 
+  Future<List<Receita>> _futureList;
+
   Future<List<Receita>> _getReceitas() async {
     var respose = await http.get(
-      Uri.encodeFull("http://receitas.emanuelcorrea.com.br/api/json/receitas_vovo.php"),
+      Uri.encodeFull("http://emanuelcorrea.com/receitasdavovo/api/json/receitas_vovo.php"),
       headers: {"Accept" : "Application/json"}
     );
 
@@ -28,7 +31,7 @@ class _HomePageState extends State<HomePage> {
       var jsonData = json.decode(respose.body);
 
       for (var u in jsonData) {
-        Receita receita = Receita(u["id_receita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"], u["slug"]);
+        Receita receita = Receita(u["idreceita"], u["nome"], u["img"], u["ingredientes"], u["categoria"], u["preparo"], u["dia"], u["color"], u["slug"]);
 
         receitas.add(receita);
       }
@@ -36,9 +39,11 @@ class _HomePageState extends State<HomePage> {
 
     return receitas;
   }
-  
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -74,104 +79,173 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: DrawerMenu(),
       body: Container(
-        child: ListView.builder(
-          itemCount: receitas.length,
-          itemBuilder: (BuildContext context, int index) {
-            final Receita receita = receitas[index];
-            
-            return Container(
-              margin: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context, MaterialPageRoute(
-                      builder: (BuildContext context) => ReceitaPage(receita),
-                    ),
-                  );
-                },
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: <Widget>[
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 5.0,
-                              color: Color.fromRGBO(255, 138, 138, 1.0)
-                            )
+        child: FutureBuilder(
+          future: _futureList,
+          initialData: [],
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (!snapshot.hasData) {
+              return ListView.builder(
+                itemCount: 6,
+                itemBuilder: (BuildContext context, int index) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 10.0, 0, 8.0),
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: [
+                              Shimmer.fromColors(
+                                highlightColor: Colors.grey[100],
+                                baseColor: Colors.grey[200],
+                                child: Container(
+                                  height: 267.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(25.0),
+                                      bottomRight: Radius.circular(25.0),
+                                    ),
+                                    color: Colors.grey[100]
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                child: Container(
+                                  height: 40.0,
+                                  alignment: Alignment.center,
+                                  width: MediaQuery.of(context).size.width * .5,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20.0),
+                                      topRight: Radius.circular(20.0)
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        blurRadius: 5.0,
+                                        color: Color.fromRGBO(100, 100, 100, .1),
+                                        offset: Offset(0, -3.0)
+                                      )
+                                    ]
+                                  ),
+                                  child: Shimmer.fromColors(
+                                    highlightColor: Colors.grey[200],
+                                    baseColor: Colors.grey,
+                                    child: Text('Carregando...'),
+                                  ),
+                                ),
+                              ),
+                            ]
                           ),
-                            child: Image.network(
-                              "http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${receita.slug}.jpg",
-                            ),
-                          ),
-                        Container(
-                          height: 40.0,
-                          alignment: Alignment.center,
-                          width: MediaQuery.of(context).size.width * .5,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(25.0),
-                              topRight: Radius.circular(25.0),
-                            ),
-                            boxShadow: [BoxShadow(
-                              color: Color.fromRGBO(68, 68, 68, 0.5),
-                            blurRadius: 5.0,
-                            )]
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Text(receita.nome)
-                            ],
-                          ),
-                        )
+                        ),
                       ],
                     ),
-                    Container(
-                      height: 50.0,
-                      decoration: BoxDecoration(
-                        color: Color.fromRGBO(255, 138, 138, 1.0),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25.0),
-                          bottomRight: Radius.circular(25.0)
-                        ),
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Color.fromRGBO(68, 68, 68, 0.5),
-                            blurRadius: 5.0,
+                  );
+                }
+              );
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final Receita receita = receitas[index];
+                  
+                  return Container(
+                    margin: EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 10.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (BuildContext context) => ReceitaPage(receita),
                           ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Text(receita.categoria, style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic,)),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+                        );
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Stack(
+                            alignment: Alignment.bottomCenter,
+                            children: <Widget>[
+                              Container(
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    width: 5.0,
+                                    color: Color.fromRGBO(255, 138, 138, 1.0)
+                                  )
+                                ),
+                                  child: Image.network(
+                                    "http://emanuelcorrea.com/receitasdavovo/assets/images/receitas/${receita.slug}",
+                                  ),
+                                ),
+                              Container(
+                                height: 40.0,
+                                alignment: Alignment.center,
+                                width: MediaQuery.of(context).size.width * .5,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(25.0),
+                                    topRight: Radius.circular(25.0),
+                                  ),
+                                  boxShadow: [BoxShadow(
+                                    color: Color.fromRGBO(68, 68, 68, 0.5),
+                                  blurRadius: 5.0,
+                                  )]
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(receita.nome)
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                          Container(
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              color: Color.fromRGBO(255, 138, 138, 1.0),
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(25.0),
+                                bottomRight: Radius.circular(25.0)
+                              ),
+                              boxShadow: [
+                                new BoxShadow(
+                                  color: Color.fromRGBO(68, 68, 68, 0.5),
+                                  blurRadius: 5.0,
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 20.0),
                               child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Icon(Icons.star, size: 20.0, color: Colors.yellow),
-                                  Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                  Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                  Icon(Icons.star, size: 15.0, color: Colors.yellow),
-                                  Icon(Icons.star, size: 15.0, color: Colors.yellow)
+                                  Text(receita.categoria, style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic,)),
+                                  Padding(
+                                    padding: const EdgeInsets.fromLTRB(0, 0, 8.0, 0),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Icon(Icons.star, size: 20.0, color: Colors.yellow),
+                                        Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                        Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                        Icon(Icons.star, size: 15.0, color: Colors.yellow),
+                                        Icon(Icons.star, size: 15.0, color: Colors.yellow)
+                                      ],
+                                    ),
+                                  ),
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
-                      )
+                            )
+                          ),
+                        ]
+                      ),
                     ),
-                  ]
-                ),
-              ),
-            );
+                  );
+                }
+              );
+            }
           }
         )
       )
@@ -180,7 +254,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    _futureList = this._getReceitas();
+    
     super.initState();
-    this._getReceitas();
   }
 }

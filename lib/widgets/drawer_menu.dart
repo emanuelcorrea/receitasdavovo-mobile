@@ -12,16 +12,13 @@ class _DrawerMenuState extends State<DrawerMenu> {
     return Drawer(
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
         children: <Widget>[
           Container(
-            height: 240.0,
+            height: 210.0,
             child: DrawerHeader(
               child: Column(
                 children: <Widget>[
-                  SizedBox(height: 12.0),
                   Container(
-                    height: 100.0,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
@@ -37,7 +34,7 @@ class _DrawerMenuState extends State<DrawerMenu> {
                     ),
                   ),
                   SizedBox(height: 12.0),
-                  Divider(color: Color.fromRGBO(255, 255, 255, 0.9),),
+                  Divider(color: Color.fromRGBO(255, 255, 255, 0.9)),
                   SizedBox(height: 12.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -56,11 +53,11 @@ class _DrawerMenuState extends State<DrawerMenu> {
                   fit: BoxFit.cover
                 )
               ),
-              padding: EdgeInsets.all(10.0),
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height * 0.739176,
+            height: MediaQuery.of(context).size.height * 1,
+            width: MediaQuery.of(context).size.width * 1,
             transform: Matrix4.translationValues(0, -10, -23),
             child: Container(
               padding: EdgeInsets.fromLTRB(0, 25.0, 0, 0),

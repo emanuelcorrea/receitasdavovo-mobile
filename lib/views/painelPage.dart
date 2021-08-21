@@ -16,7 +16,7 @@ class _PainelPageState extends State<PainelPage> {
 
   Future<List<Receitas>> _getReceitas() async {
     var respose = await http.get(
-      Uri.encodeFull("http://receitas.emanuelcorrea.com.br/api/json/receitas_vovo.php"),
+      Uri.encodeFull("http://emanuelcorrea.com/receitasdavovo/api/json/receitas_vovo.php"),
       headers: {"Accept" : "Application/json"}
     );
 
@@ -74,7 +74,7 @@ class _PainelPageState extends State<PainelPage> {
                           children: [
                             Container(
                               height: 100,
-                              width: 100 ,
+                              width: 100,
                               color: Colors.grey,
                             ),
                             Column(
@@ -116,7 +116,7 @@ class _PainelPageState extends State<PainelPage> {
                                 padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0, 0),
                                 child: SizedBox(
                                   child: Image.network(
-                                    "http://receitas.emanuelcorrea.com.br/public/assets/img/receitas/${snapshot.data[index].slug}.jpg",
+                                    "http://emanuelcorrea.com/receitasdavovo/assets/images/receitas/${snapshot.data[index].slug}",
                                     height: 90.0,
                                     width: 130.0,
                                   ),
