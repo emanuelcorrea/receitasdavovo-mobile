@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   recipeContainer: {
-    borderRadius: 10,
+    borderRadius: 5,
     flexDirection: 'row',
     position: 'relative',
     padding: 10,

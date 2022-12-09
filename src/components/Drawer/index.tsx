@@ -53,6 +53,7 @@ const Drawer = ({ drawer }: DrawerProps) => {
           {menuList.map((menu) => {
             return (
               <TouchableOpacity
+                key={menu.route}
                 style={styles.menuItem}
                 onPress={() => {
                   if (menu.route) RootNavigation.navigate(menu.route)

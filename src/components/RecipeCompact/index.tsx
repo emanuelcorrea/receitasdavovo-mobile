@@ -9,7 +9,7 @@ import * as RouteNavigation from '../RouteNavigation';
 const RecipeCompact = ({ recipe }: RecipeCompactProps) => {
   return (
     <View
-      style={{ position: 'relative', margin: 15 }}
+      style={{ position: 'relative', marginHorizontal: 15, marginTop: 15, marginBottom: 0 }}
       onTouchEnd={() => RouteNavigation.navigate('Recipe', { recipe })}
     >
       <Shadow

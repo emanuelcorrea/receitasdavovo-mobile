@@ -19,8 +19,6 @@ interface RecipeProps extends RouteProduct {}
 const Recipe = ({ route }: RecipeProps) => {
   const { recipe } = route.params;
 
-  console.log('recipe', recipe)
-  
   return (
     <ScrollView
     contentContainerStyle={{ flexGrow: 1 }}

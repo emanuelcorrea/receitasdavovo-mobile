@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "Bolo de Cenoura",
-    "category": "Bolo",
+    "category": "Bolos",
     "images": [
       {
         "position": 1,
@@ -59,6 +59,112 @@
       {
         "position": 6,
         "name": "Leve a mistura ao fogo e continue misturando até obter uma consistência cremosa, depois despeje a calda por cima do bolo."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Michelada",
+    "category": "Bebidas",
+    "images": [
+      {
+        "position": 1,
+        "src": "https://img.itdg.com.br/tdg/images/recipes/000/187/189/262147/262147_original.jpg"
+      }
+    ],
+    "ingredients": [
+      {
+        "position": 1,
+        "name": "2 limões"
+      },
+      {
+        "position": 2,
+        "name": "sal a gosto"
+      },
+      {
+        "position": 3,
+        "name": "pimenta-do-reino a gosto"
+      },
+      {
+        "position": 4,
+        "name": "cerveja"
+      },
+      {
+        "position": 5,
+        "name": "suco de 1 limão"
+      },
+      {
+        "position": 6,
+        "name": "1 colher (chá) de molho de pimenta (opcional)"
+      },
+      {
+        "position": 7,
+        "name": "gelo"
+      }
+    ],
+    "preparations": [
+      {
+        "position": 1,
+        "name": "Misture o sal e a pimenta-do-reino para fazer a decoração."
+      },
+      {
+        "position": 2,
+        "name": "Umedeça a borda do copo com limão e passe na mistura de sal e pimenta até grudar."
+      },
+      {
+        "position": 3,
+        "name": "Encha 3/4 do copo com cerveja, adicione o suco de 1 limão e 1 colher (chá) de molho de pimenta (opcional)."
+      },
+      {
+        "position": 4,
+        "name": "Coloque gelo a gosto e misture brevemente."
+      },
+      {
+        "position": 5,
+        "name": "Corte 1 rodela de limão e utilize para finalizar a decoração da bebida."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Milkshake Crocante",
+    "category": "Bebidas",
+    "images": [
+      {
+        "position": 1,
+        "src": "https://img.itdg.com.br/tdg/images/recipes/000/185/907/256219/256219_original.jpg"
+      }
+    ],
+    "ingredients": [
+      {
+        "position": 1,
+        "name": "5 bolas de sorvete de creme"
+      },
+      {
+        "position": 2,
+        "name": "2 colheres (sopa) de Ovomaltine"
+      },
+      {
+        "position": 3,
+        "name": "ovomaltine em pó para polvilhar"
+      },
+      {
+        "position": 4,
+        "name": "biscoito wafer recheado em palito para confeitar"
+      }
+    ],
+    "preparations": [
+      {
+        "position": 1,
+        "name": "Coloque em um recipiente o sorvete, as duas colheres de Ovomaltine e o leite e mexa bem até ficar homogêneo."
+      },
+      {
+        "position": 2,
+        "name": "Com o auxílio de uma colher, espalhe uma quantidade generosa de creme crocante de Ovomaltine na borda do copo em que servirá a bebida."
+      },
+      {
+        "position": 3,
+        "name": "Despeje a mistura do recipiente no copo, polvilhe Ovomaltine em pó e decore com o biscoito."
       }
     ]
   }
