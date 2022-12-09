@@ -1,0 +1,64 @@
+[
+  {
+    "id": 1,
+    "title": "Bolo de Cenoura",
+    "images": [
+      {
+        "position": 1,
+        "src": "https://www.significadodossonhos.inf.br/wp-content/uploads/2017/06/bolo-cenoura.jpg"
+      }
+    ],
+    "ingredients": [
+      {
+        "position": 1,
+        "name": "1/2 xícara (chá) de óleo"
+      },
+      {
+        "position": 2,
+        "name": "3 cenouras médias raladas"
+      },
+      {
+        "position": 3,
+        "name": "Ovos"
+      },
+      {
+        "position": 4,
+        "name": "2 xícaras (chá) de açúcar"
+      },
+      {
+        "position": 5,
+        "name": "2 e 1/2 xícaras (chá) de farinha de trigo"
+      },
+      {
+        "position": 6,
+        "name": "1 colher (sopa) de fermento em pó"
+      }
+    ],
+    "preparations": [
+      {
+        "position": 1,
+        "name": "Acrescente o açúcar e bata novamente por 5 minutos."
+      },
+      {
+        "position": 2,
+        "name": "Em uma tigela ou na batedeira, adicione a farinha de trigo e depois misture novamente."
+      },
+      {
+        "position": 3,
+        "name": "Acrescente o fermento em isture lentamente com uma colher."
+      },
+      {
+        "position": 4,
+        "name": "Asse em um forno pre-aquecido a 180 graus por aproximadamente 40 minutos."
+      },
+      {
+        "position": 5,
+        "name": "Despeje em uma tigela a manteira, o chocolate em pó, o açúcar e o leite, depois misture."
+      },
+      {
+        "position": 6,
+        "name": "Leve a mistura ao fogo e continue misturando até obter uma consistência cremosa, depois despeje a calda por cima do bolo."
+      }
+    ]
+  }
+]

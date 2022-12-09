@@ -8,113 +8,140 @@
  * @format
  */
 
-import React, {type PropsWithChildren} from 'react';
+import React, { useRef, useState } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
-  StyleSheet,
-  Text,
   useColorScheme,
+  Button,
+  StyleSheet,
+  DrawerLayoutAndroid,
+  Text,
   View,
+  TouchableOpacity
 } from 'react-native';
+
+import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
 
 import {
   Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Home from './src/pages/Home';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-const Section: React.FC<
-  PropsWithChildren<{
-    title: string;
-  }>
-> = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+import FeatherIcons from 'react-native-vector-icons/Feather';
+import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Recipe from './src/pages/Recipe';
+import { navigationRef } from './src/components/RouteNavigation';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: isDarkMode ? Colors.darker : 'rgb(211, 110, 110)',
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
+  const drawer = useRef<null | any>(null);
+
+  const navigationView = () => (
+    <View style={[styles.container, styles.navigationContainer]}>
+      <Text style={styles.paragraph}>I'm in the Drawer!</Text>
+      <Button
+        title="Close drawer"
+        onPress={() => drawer.current.closeDrawer()}
       />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
+    </View>
+  );
+
+  return (
+    <NavigationContainer ref={navigationRef}>
+      <SafeAreaView style={{ ...backgroundStyle, flex: 1 }}>
+        <DrawerLayoutAndroid
+          ref={drawer}
+          drawerWidth={300}
+          drawerPosition={'left'}
+          renderNavigationView={navigationView}
+        >
+          <StatusBar
+            barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            backgroundColor={backgroundStyle.backgroundColor}
+          />
+
+          <Stack.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+            headerTitleAlign: 'center',
+            headerTitle: () => (
+              <Text style={styles.titleContainer}>Página Inicial</Text>
+            ),
+            headerLeft: () => (
+              <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
+                <FeatherIcons name="menu" size={30} color="#fff" />
+              </TouchableOpacity>
+            ),
+            headerRight: () => (
+              <View style={styles.menuContainer}>
+                <TouchableOpacity>
+                  <EvilIcons name="heart" size={30} color="#fff" />
+                </TouchableOpacity>
+
+                <TouchableOpacity>
+                  <MaterialCommunityIcons name="dots-vertical" size={30} color="#fff" />
+                </TouchableOpacity>
+              </View>
+            ),
+            headerStyle: {
+              backgroundColor: 'rgb(252, 152, 152)',
+            },
+            headerTintColor: '#fff'
           }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+            <Stack.Screen
+              name="Home"
+              component={Home}
+            />
+            
+            <Stack.Screen
+              name="Recipe"
+              component={Recipe}
+              options={{ headerLeft: undefined, headerTitle: () => (
+                <Text style={styles.titleContainer}>Receita</Text>
+              ), }}
+            />
+          </Stack.Navigator>
+        </DrawerLayoutAndroid>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 16
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  navigationContainer: {
+    backgroundColor: "#ecf0f1"
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  paragraph: {
+    padding: 16,
+    fontSize: 15,
+    textAlign: "center"
   },
-  highlight: {
-    fontWeight: '700',
+  titleContainer: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: '#fff'
   },
+  menuContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+  }
 });
 
 export default App;
