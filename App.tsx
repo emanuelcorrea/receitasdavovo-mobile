@@ -1,27 +1,16 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
   SafeAreaView,
   StatusBar,
   useColorScheme,
   Button,
-  StyleSheet,
   DrawerLayoutAndroid,
   Text,
   View,
   TouchableOpacity
 } from 'react-native';
 
-import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 
 import {
   Colors,
@@ -35,6 +24,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Recipe from './src/pages/Recipe';
 import { navigationRef } from './src/components/RouteNavigation';
 
+import styles from './App.styles';
+import Drawer from './src/components/Drawer';
+import Account from './src/pages/Account';
+import Recipes from './src/pages/Recipes';
+import Support from './src/pages/Support';
+
 const Stack = createNativeStackNavigator();
 
 const App = () => {
@@ -47,13 +42,7 @@ const App = () => {
   const drawer = useRef<null | any>(null);
 
   const navigationView = () => (
-    <View style={[styles.container, styles.navigationContainer]}>
-      <Text style={styles.paragraph}>I'm in the Drawer!</Text>
-      <Button
-        title="Close drawer"
-        onPress={() => drawer.current.closeDrawer()}
-      />
-    </View>
+    <Drawer drawer={drawer} />
   );
 
   return (
@@ -110,38 +99,35 @@ const App = () => {
                 <Text style={styles.titleContainer}>Receita</Text>
               ), }}
             />
+
+            <Stack.Screen
+              name="Account"
+              component={Account}
+              options={{ headerLeft: undefined, headerTitle: () => (
+                <Text style={styles.titleContainer}>Minha Conta</Text>
+              ), }}
+            />
+
+            <Stack.Screen
+              name="Recipes"
+              component={Recipes}
+              options={{ headerLeft: undefined, headerTitle: () => (
+                <Text style={styles.titleContainer}>Minhas Receitas</Text>
+              ), }}
+            />
+
+            <Stack.Screen
+              name="Support"
+              component={Support}
+              options={{ headerLeft: undefined, headerTitle: () => (
+                <Text style={styles.titleContainer}>Suporte</Text>
+              ), }}
+            />
           </Stack.Navigator>
         </DrawerLayoutAndroid>
       </SafeAreaView>
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 16
-  },
-  navigationContainer: {
-    backgroundColor: "#ecf0f1"
-  },
-  paragraph: {
-    padding: 16,
-    fontSize: 15,
-    textAlign: "center"
-  },
-  titleContainer: {
-    textAlign: 'center',
-    fontSize: 16,
-    color: '#fff'
-  },
-  menuContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  }
-});
 
 export default App;

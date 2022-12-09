@@ -2,8 +2,10 @@ export interface Recipe {
   id: number;
   title: string;
   images: RecipeImage[],
-  ingredients: RecipeIngredient[]
+  ingredients: RecipeIngredient[],
   preparations: RecipePreparation[],
+  category: string,
+  rate: string
 }
 
 export interface RecipeImage {
