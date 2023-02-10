@@ -181,23 +181,23 @@
     "ingredients": [
       {
         "position": 1,
-        "name": "300 ml de açaí ou suco de açaí"
+        "name": "300 ml de açaí ou suco de açaí."
       },
       {
         "position": 2,
-        "name": "50 ml de xarope de guaraná"
+        "name": "50 ml de xarope de guaraná."
       },
       {
         "position": 3,
-        "name": "50 ml de leite"
+        "name": "50 ml de leite."
       },
       {
         "position": 4,
-        "name": "1 colher de açúcar"
+        "name": "1 colher de açúcar."
       },
       {
         "position": 5,
-        "name": "3 conchas de gelo moído"
+        "name": "3 conchas de gelo moído."
       }
     ],
     "preparations": [
