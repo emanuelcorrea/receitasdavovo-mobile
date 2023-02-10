@@ -167,5 +167,48 @@
         "name": "Despeje a mistura do recipiente no copo, polvilhe Ovomaltine em pó e decore com o biscoito."
       }
     ]
+  },
+  {
+    "id": 4,
+    "title": "Creme de Açaí",
+    "category": "Sorvetes",
+    "images": [
+      {
+        "position": 1,
+        "src": "https://creamberry.com.br/wp-content/uploads/2021/02/acai-2709077_1920-1024x683.jpg"
+      }
+    ],
+    "ingredients": [
+      {
+        "position": 1,
+        "name": "300 ml de açaí ou suco de açaí."
+      },
+      {
+        "position": 2,
+        "name": "50 ml de xarope de guaraná."
+      },
+      {
+        "position": 3,
+        "name": "50 ml de leite."
+      },
+      {
+        "position": 4,
+        "name": "1 colher de açúcar."
+      },
+      {
+        "position": 5,
+        "name": "3 conchas de gelo moído."
+      }
+    ],
+    "preparations": [
+      {
+        "position": 1,
+        "name": "Bata no liquidificador o açaí ou suco de açaí, o xarope de guaraná, o leite e o açúcar."
+      },
+      {
+        "position": 2,
+        "name": "Coloque o gelo aos poucos, até ele ficar bem consistente."
+      }
+    ]
   }
 ]
