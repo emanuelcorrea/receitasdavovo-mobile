@@ -2,7 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import recipeStyles from "../../Recipe/styles";
 
-import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
 import { Recipe } from "../types";
 
 interface IngredientsProps {
@@ -13,7 +14,12 @@ const Ingredients = ({ ingredients }: IngredientsProps) => {
   return (
     <View style={recipeStyles.listContainer}>
       <View style={recipeStyles.titleContainer}>
-        <FontAwesomeIcons name="clipboard-list" size={26} color="#fc9898" />
+        <MaterialCommunityIcons
+          style={recipeStyles.iconTitle}
+          name="silverware-fork-knife"
+          size={26}
+          color="#fc9898"
+        />
         <Text style={recipeStyles.title}>Ingredientes</Text>
       </View>
 
@@ -21,7 +27,12 @@ const Ingredients = ({ ingredients }: IngredientsProps) => {
         {ingredients.map((ingredient) => {
           return (
             <View style={recipeStyles.item} key={ingredient.position}>
-              <Text style={[recipeStyles.itemPrefix, recipeStyles.itemIcon]}>{"\u2022"}</Text>
+              <Entypo
+                style={[recipeStyles.itemPrefix, recipeStyles.itemIcon]}
+                name="dot-single"
+                size={28}
+                color="#fc9898"
+              />
               <Text style={recipeStyles.itemName}>{ingredient.name}</Text>
             </View>
           );
@@ -29,6 +40,6 @@ const Ingredients = ({ ingredients }: IngredientsProps) => {
       </View>
     </View>
   );
-}
+};
 
 export default Ingredients;

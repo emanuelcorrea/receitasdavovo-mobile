@@ -3,52 +3,70 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-    backgroundColor: '#fff',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
     flexDirection: 'column',
-    padding: 15
+    marginTop: -45,
+    marginBottom: 20
   },
   listContainer: {
-    backgroundColor: '#f2f2f2',
-    width: '100%',
-    borderRadius: 10,
-    marginTop: 20
+    flex: 1,
+    borderRadius: 15,
+    padding: 15,
+    marginTop: 20,
+    marginHorizontal: 20,
+    elevation: 7,
+    shadowColor: '#00000075',
+    backgroundColor: '#fff',
   },
   listItems: {
     padding: 15
   },
   item: {
+    display: 'flex',
     flexDirection: 'row',
-    alignItems: 'center',
     marginBottom: 0,
   },
   itemName: {
     fontSize: 16,
-    fontWeight: "500"
+    fontWeight: "500",
   },
   itemIcon: {
-    fontSize: 30,
+    marginLeft: -7,
+    marginRight: -5
   },
   itemPrefix: {
     color: "#fc9898",
-    paddingRight: 10
+    paddingRight: 10,
+    marginTop: -3,
+    marginBottom: 10,
   },
   itemOrdered: {
     fontSize: 20,
-    marginBottom: 10
+    marginBottom: 10,
   },
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 15,
     borderRadius: 10,
-    backgroundColor: '#ececec',
+  },
+  iconTitle: {
+    backgroundColor: '#f7f7f7',
+    borderRadius: 50,
+    width: 45,
+    height: 45,
+    alignContent: 'center',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    elevation: 3,
+    shadowColor: '#00000031'
   },
   title: {
     color: '#fc9898',
     fontSize: 18,
     textTransform: 'uppercase',
     marginLeft: 15,
-    fontWeight: '500'
+    fontWeight: '500',
   },
 });
 

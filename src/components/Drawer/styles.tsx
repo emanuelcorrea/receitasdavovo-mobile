@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: '#fbbaba'
+    backgroundColor: '#ffa3a3'
   },
   menuList: {},
   menuItem: {

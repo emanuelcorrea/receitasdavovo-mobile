@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import { DrawerProps } from "./types";
 import FeatherIcons from 'react-native-vector-icons/Feather';
@@ -10,28 +10,28 @@ import * as RootNavigation from '../RouteNavigation/index';
 const Drawer = ({ drawer }: DrawerProps) => {
   const user = {
     name: 'Emanuel Correa',
-    image: 'https://raw.githubusercontent.com/emanuelcorrea/receitasdavovo-mobile/master/assets/images/vovo-feliz.png'
-  }
+    image: 'https://raw.githubusercontent.com/emanuelcorrea/receitasdavovo-mobile/old-flutter/assets/images/vovo-feliz.png'
+  };
 
   const menuList = [
     {
       name: 'Minha Conta',
-      icon: () => <MaterialCommunityIcons name="account" size={30} color="#fff" />,
+      icon: () => <MaterialCommunityIcons name="account" size={28} color="#fff" />,
       route: 'Account'
     },
     {
       name: 'Minhas Receitas',
-      icon: () => <FontAwesomeIcons name="book" size={30} color="#fff" />,
+      icon: () => <FontAwesomeIcons name="book" size={28} color="#fff" />,
       route: 'Recipes'
     },
     {
       name: 'Suporte',
-      icon: () => <MaterialCommunityIcons name="email-newsletter" size={30} color="#fff" />,
+      icon: () => <MaterialCommunityIcons name="email-newsletter" size={28} color="#fff" />,
       route: 'Support'
     },
     {
       name: 'Sair',
-      icon: () => <FeatherIcons name="log-out" size={30} color="#fff" />,
+      icon: () => <FeatherIcons name="log-out" size={28} color="#fff" />,
     },
   ];
   
@@ -53,10 +53,10 @@ const Drawer = ({ drawer }: DrawerProps) => {
           {menuList.map((menu) => {
             return (
               <TouchableOpacity
-                key={menu.route}
+                key={menu.name}
                 style={styles.menuItem}
                 onPress={() => {
-                  if (menu.route) RootNavigation.navigate(menu.route)
+                  if (menu.route) RootNavigation.navigate(menu.route);
                   
                   drawer.current.closeDrawer();
                 }}
@@ -70,6 +70,6 @@ const Drawer = ({ drawer }: DrawerProps) => {
       </View>
     </View>
   );
-}
+};
 
 export default Drawer;

@@ -3,11 +3,11 @@ import {
   SafeAreaView,
   StatusBar,
   useColorScheme,
-  Button,
   DrawerLayoutAndroid,
   Text,
   View,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -58,35 +58,44 @@ const App = () => {
             barStyle={isDarkMode ? 'light-content' : 'dark-content'}
             backgroundColor={backgroundStyle.backgroundColor}
           />
-
           <Stack.Navigator
             initialRouteName="Home"
             screenOptions={{
-            headerTitleAlign: 'center',
-            headerTitle: () => (
-              <Text style={styles.titleContainer}>Página Inicial</Text>
-            ),
-            headerLeft: () => (
-              <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
-                <FeatherIcons name="menu" size={30} color="#fff" />
-              </TouchableOpacity>
-            ),
-            headerRight: () => (
-              <View style={styles.menuContainer}>
-                <TouchableOpacity>
-                  <EvilIcons name="heart" size={30} color="#fff" />
+              headerTitleAlign: 'center',
+              headerTitle: () => (
+                <Text style={styles.titleContainer}>Página Inicial</Text>
+              ),
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => drawer.current.openDrawer()}>
+                  <FeatherIcons name="menu" size={30} color="#fff" />
                 </TouchableOpacity>
+              ),
+              headerRight: () => (
+                <View style={styles.menuContainer}>
+                  <TouchableOpacity>
+                    <EvilIcons name="heart" size={30} color="#fff" />
+                  </TouchableOpacity>
 
-                <TouchableOpacity>
-                  <MaterialCommunityIcons name="dots-vertical" size={30} color="#fff" />
-                </TouchableOpacity>
-              </View>
-            ),
-            headerStyle: {
-              backgroundColor: 'rgb(252, 152, 152)',
-            },
-            headerTintColor: '#fff'
-          }}>
+                  <TouchableOpacity>
+                    <MaterialCommunityIcons name="dots-vertical" size={30} color="#fff" />
+                  </TouchableOpacity>
+                </View>
+              ),
+              headerBackground: () => {
+                return (
+                  <Image
+                    style={{
+                      height: '100%',
+                      width: '100%',
+                    }}
+                    source={{
+                      uri: "https://raw.githubusercontent.com/emanuelcorrea/receitasdavovo-mobile/old-flutter/assets/images/bg.png"
+                    }}
+                  />
+                );
+              },
+              headerTintColor: '#fff'
+            }}>
             <Stack.Screen
               name="Home"
               component={Home}
@@ -95,9 +104,15 @@ const App = () => {
             <Stack.Screen
               name="Recipe"
               component={Recipe}
-              options={{ headerLeft: undefined, headerTitle: () => (
-                <Text style={styles.titleContainer}>Receita</Text>
-              ), }}
+              options={{ 
+                header: undefined,
+                headerTransparent: true,
+                statusBarTranslucent: true,
+                statusBarHidden: true,
+                navigationBarHidden: true,
+                fullScreenGestureEnabled: true,
+                headerShown: false
+              }}
             />
 
             <Stack.Screen

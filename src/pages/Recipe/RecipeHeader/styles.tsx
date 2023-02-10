@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 250,
+    height: 300,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -17,12 +17,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 5,
     elevation: 15,
-  },
-  title: {
-    textAlign: 'center',
-    marginTop: 20,
-    fontSize: 20,
-    fontWeight: '400',
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
   },
   line: {
     height: 1,
@@ -44,6 +40,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignSelf: 'center',
     backgroundColor: '#fc9898',
+  },
+  backButton: {
+    position: 'absolute',
+    left: 20,
+    top: 20,
+    zIndex: 10,
+    height: 50,
+    width: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 100,
+    backgroundColor: '#fff',
   }
 });
 

@@ -6,15 +6,19 @@ import styles from './styles';
 import FontAwesomeIcons from 'react-native-vector-icons/FontAwesome5';
 import { Recipe } from "../types";
 
-interface PreparationMode {
+interface PreparationModeProps {
   preparations: Recipe['preparations']
 }
 
-const PreparationMode = ({ preparations }: PreparationMode) => {
+const PreparationMode = ({ preparations }: PreparationModeProps) => {
   return (
     <View style={recipeStyles.listContainer}>
       <View style={recipeStyles.titleContainer}>
-        <FontAwesomeIcons name="clipboard-list" size={26} color="#fc9898" />
+        <FontAwesomeIcons
+          name="clipboard-list"
+          size={26}
+          color="#fc9898"
+          style={recipeStyles.iconTitle} />
         <Text style={recipeStyles.title}>Modo de Preparo</Text>
       </View>
 
@@ -30,6 +34,6 @@ const PreparationMode = ({ preparations }: PreparationMode) => {
       </View>
     </View>
   );
-}
+};
 
 export default PreparationMode;

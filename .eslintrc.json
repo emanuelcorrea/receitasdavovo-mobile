@@ -1,0 +1,44 @@
+{
+  "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "eslint:recommended"
+  ],
+  "overrides": [
+  ],
+  "parserOptions": {
+      "ecmaVersion": "latest",
+      "ecmaFeatures": {
+          "jsx": true
+      },
+      "sourceType": "module",
+      "project": "./tsconfig.json"
+  },
+  "globals": {
+      "JSX": true,
+      "NodeJS": true
+  },
+  "plugins": [
+      "react",
+      "prettier",
+      "react-hooks"
+  ],
+  "rules": {
+      "semi": "off",
+      "@typescript-eslint/semi": ["error"],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
+      "indent": ["error", 2],
+      "eol-last": ["error", "always"]
+  },
+  "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+  }
+}
